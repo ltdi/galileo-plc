@@ -19,7 +19,7 @@ echo "1) Imágenes y guía de Intel (espejo de archive.org del sitio downloadmir
 bajar "$D/flash_1.1.1/Flash-missingPDAT-Release-1.1.1.bin" "$ESPEJO/26418/eng/Flash-missingPDAT-Release-1.1.1.bin" 3da41d38766d891fdb09dbb0d707e3c9ea0ce733e5c4e17a12c305f380491378
 bajar "$D/flash_1.1.1/Flash-missingPDAT-Release-1.1.1.cap" "$ESPEJO/26418/eng/Flash-missingPDAT-Release-1.1.1.cap" efdce2e553a7071c9f1a9e3c20ab193c394ba70218b3988de102d052dbbe8b8d
 bajar "$D/flash_1.1.1/CapsuleApp-1.1.1.efi"                "$ESPEJO/26418/eng/CapsuleApp-1.1.1.efi"                0e372b8bd2ed76856f1a264064cc1db6547673b8adebff4a55a1f3f80db6b51b
-bajar "$D/guia_placa/Galileo_BoardUserGuide_330237_002.pdf" "$ESPEJO/23962/eng/Galileo_BoardUserGuide_330237_002.pdf" 734de295581b06d55105553d22e9306d023805093ba019798a816380393163e1
+bajar "$D/guia_placa/Galileo_BoardUserGuide_330237_002.pdf" "https://cdrdv2-public.intel.com/841680/galileo_boarduserguide_330237_002.pdf" cb6af1bd6116ef1b93190d3eb16e6a3a1d74dea5312bbbc513201b1dc72961be
 echo "2) Repositorios de GitHub, en el commit probado"
 fijar "$D/galileo_runtime" https://github.com/intel/Galileo-Runtime   ee66e9a3b21f5fc68068bbe3ab59d0d8ae03a232
 fijar "$D/openplc_v3"      https://github.com/thiagoralves/OpenPLC_v3 b5d41356dab4aeadca0dd7ca64ba542f870b595d
