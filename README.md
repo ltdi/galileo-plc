@@ -24,14 +24,30 @@ Una Galileo Gen 1 (FAB-D) que arranca sola como un PLC: imagen propia en la flas
 | `datasheets/` | copias de consulta de los PDF de Intel y Cypress usados (esquemático, hojas de datos, guía de la placa) |
 | `scripts_imagen/` | construcción y firma de la imagen (`construir_imagen.py`, `firma.py`, `cpio_newc.py`) |
 | `lanzar_plc.py` | lanzador: abre el puente local, una ventana pequeña de Firefox con el panel en vivo y el editor; todo se detiene al cerrar el editor |
-| `scripts_openplc/` | puente local (`puente_local.py`), panel en vivo (`panel_vivo.py`), placas virtuales de prueba (`placa_virtual.py`) y servidor central alternativo (`servidor_runtime.py`, `placas.json`, `configurar_alias.sh`), adaptador de proyectos de OpenPLC Editor (`proyecto_editor_a_st.py`), capa de hardware (`hardware_layer_galileo_8e4s.cpp`), compilador del alumno (`plc.py`), cargador (`plc_cargar.py`), servidor web (`servidor_plc.py`), pruebas (`pruebas_placa/`, `prueba_larga.py`) |
+| `scripts_openplc/` | programas de PC y de la estación de compilación; detalle en la tabla siguiente |
 | `openplc_galileo_8e4s/` | estación de compilación ya construida (núcleo de OpenPLC, matiec, glue) |
-| `imagen_trabajo/salida/` | `Flash-PLC.bin` y `Flash-PLC.cap` (imagen v4, la flasheada) |
+| `imagen_trabajo/salida/` | `Flash-PLC.bin` y `Flash-PLC.cap` (imagen v6, con el programa de fábrica seguro) |
 | `ejemplos_alumno/` | programas de ejemplo en texto estructurado (`programa_fabrica_seguro`, `motor_marcha_paro`, `inversion_giro`, `estrella_triangulo`, `ascensor3`, `porton`, `intermitente`, `prueba_es`, `con_error`) |
 | `telnet_elf/` | ELF de rescate de 6 KB (red + telnet 30 min) que se sube por USB |
 | `scripts_doc/` | generador del informe Word |
 | `descargas/` | firmware 1.1.1 de Intel, BSP, guías, fuentes de OpenPLC (185 MB) |
 | `archivo/` | todo lo anterior a esta versión: informes previos, prototipos de Arduino, mediciones iniciales, estación de un relé, código obsoleto |
+
+### Contenido de `scripts_openplc/`
+
+| Archivo | Para qué sirve |
+|---|---|
+| `puente_local.py` | puente local: busca placas, emula el runtime que espera el editor, compila y carga |
+| `panel_vivo.py` | panel en el navegador: ver y forzar entradas, salidas y variables |
+| `placa_virtual.py` | placas virtuales para probar sin hardware |
+| `servidor_runtime.py` | servidor de runtime (lo reutiliza el puente; también sirve como servidor central alternativo) |
+| `placas.json` / `configurar_alias.sh` | lista de placas y alias de red del servidor central alternativo |
+| `proyecto_editor_a_st.py` | adaptador de proyectos de OpenPLC Editor |
+| `hardware_layer_galileo_8e4s.cpp` | capa de hardware: entradas, salidas y forzado |
+| `plc.py` | compilador para línea de comandos |
+| `plc_cargar.py` | cargador de programas a la placa |
+| `servidor_plc.py` | servidor web (sin verificar) |
+| `pruebas_placa/`, `prueba_larga.py` | pruebas en la placa |
 
 ## Lo esencial
 
