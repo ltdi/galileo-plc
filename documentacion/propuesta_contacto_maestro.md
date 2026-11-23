@@ -21,7 +21,18 @@ Un contacto (interruptor con llave y/o pulsador de emergencia tipo hongo, normal
 
 ### 3.2 Etapa recomendada (con vigilancia)
 - El contacto maestro lo gobierna un **relé de vigilancia**: se mantiene cerrado mientras llegue un **latido** (pulsos de ~2–5 Hz) que genera la capa de hardware del PLC *dentro del ciclo de programa*. Si el PLC se cuelga, se reinicia o aún está arrancando, no hay latido y el relé cae. Se puede construir con un monoestable reenganchable (por ejemplo, un 555) y un transistor.
-- Cuesta una de las cuatro salidas (por ejemplo D11) o un pin libre del conector. El latido se generaría en `hardware_layer_galileo_8e4s.cpp`; el procedimiento y la frecuencia se definen al elegir los componentes.
+- **No cuesta ninguna salida de relé.** El latido sale por un pin analógico libre de la Galileo, usado como GPIO: **A0 a A3** (A4 y A5 comparten pines con el bus I2C: evitarlos). Cada uno tiene un conmutador que hay que poner en «GPIO»:
+
+  | Pin | GPIO de Linux | Conmutador (poner en alto) |
+  |---|---|---|
+  | A0 | 44 | gpio37 |
+  | A1 | 45 | gpio36 |
+  | A2 | 46 | gpio23 |
+  | A3 | 47 | gpio22 |
+
+  Comprobado en la placa el 23/11/2026 (solo por software, sin medir el pin): con `gpio37`=1, `gpio44` se exporta, se comporta como salida (1 y 0 leídos de vuelta), y como entrada con *pull-up* lee 1. No se midió el nivel eléctrico en el conector.
+- El latido se generaría en `hardware_layer_galileo_8e4s.cpp`, dentro del ciclo de programa (si el ciclo se detiene, el latido también); aún **no está implementado**.
+- **De paso:** A0–A3 (y, con cuidado, A4/A5) quedan disponibles como **entradas o salidas digitales adicionales** si la placa de expansión las llevara a su conector.
 - Cubre los cuelgues del sistema sin depender de que Linux funcione.
 
 ### 3.3 Complementos
@@ -36,5 +47,5 @@ Un contacto (interruptor con llave y/o pulsador de emergencia tipo hongo, normal
 ## 5. Pendiente de medir o decidir
 1. Estado real de D8–D11 durante los primeros segundos del arranque (multímetro/osciloscopio o un LED).
 2. Polaridad del módulo de relés de la placa del proyecto.
-3. Elegir pulsador/llave, relé de vigilancia y qué salida se sacrifica para el latido (o ampliar el conector).
+3. Elegir pulsador/llave y relé de vigilancia, y llevar el pin A0 (o A1–A3) de la Galileo al circuito de vigilancia en la placa de expansión.
 4. Dónde se coloca físicamente (frente del banco, accesible).
