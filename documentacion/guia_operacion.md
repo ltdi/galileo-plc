@@ -4,7 +4,7 @@ Procedimientos verificados en la placa el 23/11/2026. Las rutas son relativas a 
 
 ## 1. Uso normal
 
-1. Enchufar la fuente (5 V). La placa arranca sola; en 40 a 60 s tiene IP por DHCP y Modbus TCP en el puerto 502. Corre el programa de fábrica (ascensor de 3 pisos).
+1. Enchufar la fuente (5 V). La placa arranca sola; en 40 a 60 s tiene IP por DHCP y Modbus TCP en el puerto 502. Corre el programa de fábrica, que **deja las cuatro salidas apagadas** (`ejemplos_alumno/programa_fabrica_seguro.st`); se prueba con el panel en vivo (forzando entradas y salidas).
 2. Ver el estado: cualquier cliente Modbus a `IP:502`. Entradas = discrete inputs 0–7, salidas = coils 0–3, `%MW` = holding registers desde 1024.
 3. **No** enviar señales a OpenPLC (`kill`, `kill -STOP`, `reboot` sin parar antes): cuelgan la placa. Detenerlo siempre con `/etc/init.d/plc.sh stop` o con la orden `quit()` del puerto 43628.
 
@@ -60,7 +60,7 @@ Solo POUs en texto estructurado: la escalera y los bloques gráficos del editor 
 
 ```bash
 # 1) núcleo de OpenPLC + programa de fábrica (rutas ABSOLUTAS)
-bash scripts_openplc/construir.sh "$PWD/descargas/openplc_v3" "$PWD/openplc_galileo_8e4s" "$PWD/ejemplos_alumno/ascensor3.st"
+bash scripts_openplc/construir.sh "$PWD/descargas/openplc_v3" "$PWD/openplc_galileo_8e4s" "$PWD/ejemplos_alumno/programa_fabrica_seguro.st"
 # 2) imagen firmada (.bin y .cap) con la MAC de la etiqueta de la placa
 python3 -I scripts_imagen/construir_imagen.py descargas/flash_1.1.1 descargas/galileo_runtime/sysimage/config/key.pem \
         openplc_galileo_8e4s/openplc 98:4F:EE:00:FA:94 imagen_trabajo/salida
@@ -70,7 +70,7 @@ python3 -I scripts_imagen/firma.py verificar imagen_trabajo/salida/Flash-PLC.cap
 python3 -I scripts_imagen/firma.py verificar imagen_trabajo/salida/Flash-PLC.bin 260000
 ```
 
-Última imagen flasheada (v5): `Flash-PLC.cap` md5 `d42438b97a3afa216d8e658e67325bb6`, `Flash-PLC.bin` md5 `0fac999b92c6cae42c1f5278db94abd7`. La MAC va dentro de la imagen: **una imagen por placa**.
+Última imagen flasheada (v6): `Flash-PLC.cap` md5 `913afc36b5c08e5737e5d0a90a6c8dac`, `Flash-PLC.bin` md5 `9079add31c60e37ab133fe7841661267`; incluye el forzado de entradas y salidas y el programa de fábrica seguro. La MAC va dentro de la imagen: **una imagen por placa**.
 
 ## 4. Flashear una placa (sin Arduino IDE)
 

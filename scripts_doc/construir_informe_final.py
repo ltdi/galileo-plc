@@ -22,7 +22,7 @@ d.p("**Versión del 23 de noviembre de 2026.** Reemplaza al «Reporte 2», al «
 d.h1("1. Resumen ejecutivo")
 d.vinetas([
     "**La placa ya se enciende y funciona como un PLC.** Con una imagen propia grabada en su flash arranca sola (unos 40 a 60 s desde que se enciende), levanta la red, "
-    "ejecuta el programa de ejemplo (un ascensor de tres pisos) y atiende **Modbus TCP** en el puerto 502. No usa microSD ni telnet ni Arduino IDE.",
+    "ejecuta un programa de fábrica que deja las salidas apagadas y atiende **Modbus TCP** en el puerto 502. No usa microSD ni telnet ni Arduino IDE.",
     "**Entradas y salidas:** 8 entradas (D2 a D7, D12, D13; activas a nivel bajo) y 4 salidas (D8 a D11), como pide el proyecto para la placa de expansión de 8 optoentradas y 4 relés. "
     "Las cuatro salidas y las ocho entradas se probaron en la placa (las entradas uniendo cada pin a GND).",
     "**Carga de programas por red** en unos 10 s, sin reprogramar la flash: un receptor dentro de la imagen recibe el ejecutable, verifica su suma de control y reinicia el PLC con el programa nuevo. "

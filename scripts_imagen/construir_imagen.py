@@ -42,7 +42,7 @@ for h in ents:                                   # la lista de modulos de la Gen
 PLC_SH = r"""#!/bin/sh
 # Arranque automatico del PLC didactico (OpenPLC) en la Galileo Gen 1, con supervisor.
 # Corre en el nivel 5, despues de quark-init (modulos) y galileod (cargador de sketches).
-PLC_BIN=/opt/plc/openplc       # programa de fabrica (ejemplo del ascensor)
+PLC_BIN=/opt/plc/openplc       # programa de fabrica: todas las salidas apagadas (programa_fabrica_seguro.st)
 PLC_USR=/tmp/openplc_user      # programa cargado por el alumno (vive en RAM: se pierde al apagar)
 PIDPLC=/tmp/openplc.pid
 LOG=/tmp/openplc.log

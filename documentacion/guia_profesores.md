@@ -23,7 +23,7 @@ Un autómata programable pequeño y económico (placa Intel Galileo) que los alu
 - **No tiene entradas ni salidas analógicas** en este sistema: todavía no sirve para variadores con señal de 0–10 V ni para sensores de 4–20 mA.
 - **Los pines trabajan a nivel lógico de la placa (3,3–5 V)**. No soportan 24 V ni 220 V. La **placa de expansión con 8 optoentradas y 4 relés** del proyecto está en desarrollo; hasta que exista se usan pulsadores a masa y un módulo de relé comercial (un relé de ese tipo conmuta una carga pequeña o la bobina de un contactor, nunca el motor directamente).
 - **No es un PLC de seguridad ni de tiempo real estricto.** El ciclo es de 20 ms, con picos medidos de hasta ~94 ms. **El paro de emergencia y las protecciones se cablean aparte, independientes del PLC.**
-- **El programa vive en la memoria RAM:** si se corta la energía, la placa vuelve a su **programa de fábrica** (un ascensor de 3 pisos) y hay que cargar el programa otra vez.
+- **El programa vive en la memoria RAM:** si se corta la energía, la placa vuelve a su **programa de fábrica**, que **deja todas las salidas apagadas**, y hay que cargar el programa otra vez.
 
 ## 4. Cómo usarlo en la cátedra
 
@@ -54,7 +54,7 @@ Los programas de ejemplo están en `ejemplos_alumno/`. «Probado» significa car
 | 3 | **Estrella-triángulo** (`estrella_triangulo.st`) | temporización (5 s), secuencia, tiempo muerto de 100 ms, KM2 y KM3 nunca a la vez | 3 / 3 | probado |
 | 4 | Luz intermitente (`intermitente.st`) | dos temporizadores (1 s encendida, 3 s apagada); se habilita forzando una salida desde el panel | 0 / 2 | incluido, compila |
 | 5 | Portón automático (`porton.st`) | máquina de estados, finales de carrera, fotocélula | 4 / 3 | incluido, compila; lógica sin verificar |
-| 6 | Ascensor de 3 pisos (`ascensor3.st`) | secuencias, memoria de llamadas | 8 / 4 | programa de fábrica; carga y corre; sin verificar con botonera real |
+| 6 | Ascensor de 3 pisos (`ascensor3.st`) | secuencias, memoria de llamadas | 8 / 4 | incluido; carga y corre; sin verificar con botonera real |
 | 7 | Detección de errores (`con_error.st`) | leer los mensajes del compilador | — | incluido |
 | 8 | Arranque secuencial de cintas o bombas, control de nivel con boyas | temporización, histéresis | — | **propuesto, no incluido** |
 
@@ -65,14 +65,14 @@ Los programas 1 a 3 están pensados para el cableado típico de un tablero: puls
 1. **Nunca conectar la tensión de red ni 24 V directamente** a los pines de la placa.
 2. El **paro de emergencia** y las protecciones (guardamotor, térmico, fusibles) van cableados, **sin depender del PLC**.
 3. Las salidas manejan un módulo de relé; la potencia la conmutan contactores con sus protecciones.
-4. **Al encender**, la placa ejecuta el programa de fábrica (el ascensor) hasta que se cargue otro. **No conectar cargas peligrosas durante el arranque.** Está pendiente reemplazar ese programa por uno que deje todas las salidas apagadas.
+4. **Al encender**, la placa ejecuta un programa de fábrica que **mantiene las cuatro salidas apagadas** (se comprobó: ni una escritura Modbus las activa) hasta que se cargue otro. **Pero no se midió el estado de los pines en los primeros ~15 segundos del arranque**, antes de que Linux inicie el PLC: con una carga peligrosa conectada, comprobar ese intervalo con un instrumento antes de confiar en él.
 5. Las entradas se leen **activas al cerrar a masa** (lógica negativa): una entrada sin conectar vale «inactiva».
 
 ## 7. Lo que falta
 
 - La **placa de expansión** (8 optoentradas, 4 relés) y la verificación de su polaridad.
 - Entradas analógicas.
-- Un programa de fábrica «seguro» (todo apagado) y una guía para el alumno.
+- Medir el estado de las salidas durante los primeros segundos del arranque, y una guía para el alumno.
 - Pruebas en el laboratorio con varios bancos a la vez, y en Windows.
 - Si necesitan un práctico que no está en la lista, indíquenlo: los de estas características se pueden agregar al repositorio.
 

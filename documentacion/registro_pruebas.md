@@ -251,3 +251,11 @@ Hasta las pruebas con A0 y A2 el NO iba a A2 y el NC a A0; después pasaron a D2
 ### Verificación de los enlaces de referencia (23 de noviembre)
 
 - Enlaces aportados por el LTDI contrastados con las copias locales (SHA-256): el esquemático de `dl.btc.pl` y la hoja de la Galileo de `intel.com` son **idénticos** a los archivos de `utn/ltdi/galileo`; `Galileo Schematic.pdf` y `arduino_galileo_e000037_1.pdf` son el mismo archivo (el enlace se repite en la lista). La guía de la placa del sitio oficial de Intel (630 324 B) **no es idéntica** a la del espejo de archive.org (635 057 B): el script usa ahora la oficial. Hoja del CY8C9540A (Arrow), capítulo del libro (Springer) y datasheet del Quark (Mouser): **no verificables desde aquí** (bloqueo anti-robots o corte de conexión). Detalle en `FUENTES.md`.
+
+### Programa de fábrica seguro e imagen v6 (23 de noviembre)
+
+- **Decisión (usuario):** dejar el sistema en la situación más segura posible. El programa de prueba del tablero ya no hace falta: con el panel en vivo (ver y forzar entradas y salidas) alcanza para probar la placa.
+- **`ejemplos_alumno/programa_fabrica_seguro.st`:** las cuatro salidas se escriben en FALSE en cada ciclo; nada las activa. La imagen **v6** lo lleva como programa de fábrica (antes, el ascensor de 3 pisos). `.cap` md5 913afc36…, `.bin` md5 9079add3…; firmas verificadas; incluye el forzado.
+- **Flasheada y probada en la placa:** tras el reinicio (~165 s) respondieron los puertos 502, 9100 y 9101; salidas `[0,0,0,0]`, registros de forzado en 0; **escribir 1 por Modbus en las 4 salidas las deja en 0** (el programa las reescribe); **forzar D8 y D10 desde los registros del panel las pone en 1** y al soltar vuelven a 0.
+- **Antes del reinicio**, la placa llevaba 2 h 24 min encendida y estable a pesar de las pruebas con el editor, el puente, el panel y las cargas repetidas.
+- **Sin verificar:** el estado de los pines D8–D11 durante los primeros ~15 s del arranque (hasta que se inicia OpenPLC); hace falta un instrumento o la observación del relé. Cualquier equipo de la red puede forzar salidas escribiendo los registros 2024–2027 por Modbus (no hay autenticación): solo para redes de laboratorio aisladas.

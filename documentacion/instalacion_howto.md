@@ -56,7 +56,7 @@ Ya viene en el proyecto (11 MB). Contiene `iec2c` (matiec, compilado para el PC)
 ```bash
 bash instalacion/obtener_dependencias.sh --sin-editor      # deja descargas/openplc_v3 en el commit b5d41356 (abril de 2026), entre otras cosas
 # matiec: construir utils/matiec_src/iec2c con las herramientas del propio OpenPLC (necesita gcc, g++, make, bison, flex, autoconf)
-bash scripts_openplc/construir.sh "$PWD/descargas/openplc_v3" "$PWD/openplc_galileo_8e4s" "$PWD/ejemplos_alumno/ascensor3.st"   # rutas ABSOLUTAS
+bash scripts_openplc/construir.sh "$PWD/descargas/openplc_v3" "$PWD/openplc_galileo_8e4s" "$PWD/ejemplos_alumno/programa_fabrica_seguro.st"   # rutas ABSOLUTAS; el último argumento es el programa de fábrica
 ```
 Reconstruir desde cero (compilar matiec incluido) **[sin verificar]** en esta máquina: ya estaba compilado.
 

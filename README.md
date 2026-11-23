@@ -25,7 +25,7 @@ Una Galileo Gen 1 (FAB-D) que arranca sola como un PLC: imagen propia en la flas
 | `scripts_openplc/` | puente local (`puente_local.py`), panel en vivo (`panel_vivo.py`), placas virtuales de prueba (`placa_virtual.py`) y servidor central alternativo (`servidor_runtime.py`, `placas.json`, `configurar_alias.sh`), adaptador de proyectos de OpenPLC Editor (`proyecto_editor_a_st.py`), capa de hardware (`hardware_layer_galileo_8e4s.cpp`), compilador del alumno (`plc.py`), cargador (`plc_cargar.py`), servidor web (`servidor_plc.py`), pruebas (`pruebas_placa/`, `prueba_larga.py`) |
 | `openplc_galileo_8e4s/` | estación de compilación ya construida (núcleo de OpenPLC, matiec, glue) |
 | `imagen_trabajo/salida/` | `Flash-PLC.bin` y `Flash-PLC.cap` (imagen v4, la flasheada) |
-| `ejemplos_alumno/` | programas de ejemplo en texto estructurado (`ascensor3`, `porton`, `intermitente`, `prueba_es`, `con_error`) |
+| `ejemplos_alumno/` | programas de ejemplo en texto estructurado (`programa_fabrica_seguro`, `motor_marcha_paro`, `inversion_giro`, `estrella_triangulo`, `ascensor3`, `porton`, `intermitente`, `prueba_es`, `con_error`) |
 | `telnet_elf/` | ELF de rescate de 6 KB (red + telnet 30 min) que se sube por USB |
 | `scripts_doc/` | generador del informe Word |
 | `descargas/` | firmware 1.1.1 de Intel, BSP, guías, fuentes de OpenPLC (185 MB) |
