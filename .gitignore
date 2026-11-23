@@ -1,0 +1,14 @@
+# Material de terceros pesado: se obtiene aparte (ver documentacion/propuesta_repositorio.md)
+/descargas/
+/imagen_trabajo/
+/openplc_galileo_8e4s/
+/archivo/
+# Generado
+__pycache__/
+*.pyc
+*.openplc
+*.elf
+# Secretos y datos locales
+scripts_openplc/datos_servidor/
+scripts_openplc/placas.json
+*.pem
