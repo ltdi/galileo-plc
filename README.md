@@ -18,6 +18,7 @@ Una Galileo Gen 1 (FAB-D) que arranca sola como un PLC: imagen propia en la flas
 | Carpeta | Contenido |
 |---|---|
 | `instalacion/` | `preparar_equipo.sh` (un solo comando para un PC de alumno) e `instalar_compilador.sh` |
+| `datasheets/` | copias de consulta de los PDF de Intel y Cypress usados (esquemático, hojas de datos, guía de la placa) |
 | `scripts_imagen/` | construcción y firma de la imagen (`construir_imagen.py`, `firma.py`, `cpio_newc.py`) |
 | `lanzar_plc.py` | lanzador: abre el puente local, una ventana pequeña de Firefox con el panel en vivo y el editor; todo se detiene al cerrar el editor |
 | `scripts_openplc/` | puente local (`puente_local.py`), panel en vivo (`panel_vivo.py`), placas virtuales de prueba (`placa_virtual.py`) y servidor central alternativo (`servidor_runtime.py`, `placas.json`, `configurar_alias.sh`), adaptador de proyectos de OpenPLC Editor (`proyecto_editor_a_st.py`), capa de hardware (`hardware_layer_galileo_8e4s.cpp`), compilador del alumno (`plc.py`), cargador (`plc_cargar.py`), servidor web (`servidor_plc.py`), pruebas (`pruebas_placa/`, `prueba_larga.py`) |

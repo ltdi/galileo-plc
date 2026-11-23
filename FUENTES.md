@@ -17,7 +17,7 @@ El índice de paquetes de Intel del que sale la dirección del SDK es el de Ardu
 
 ## 2. Documentación técnica de referencia (PDF)
 
-Enlaces aportados por el LTDI (sin los parámetros de seguimiento `utm_source=…`). «Copia local» = archivo en `utn/ltdi/galileo` (sin versionar); no se redistribuyen desde este repositorio. Comprobación del 23/11/2026.
+Enlaces aportados por el LTDI (sin los parámetros de seguimiento `utm_source=…`). Los PDF (salvo el libro) están incluidos en [`datasheets/`](datasheets/) como copia de consulta; «Copia local» = el archivo equivalente en `utn/ltdi/galileo`. Comprobación del 23/11/2026.
 
 | Documento | Enlace | Comprobación | Copia local (SHA-256, tamaño) |
 |---|---|---|---|
@@ -39,7 +39,7 @@ Otras fuentes citadas en la documentación:
 
 ## 3. Lo que NO es alcanzable desde otro equipo (a resolver)
 
-1. **Los PDF de referencia de la Galileo** están como archivos sin seguimiento en `utn/ltdi/galileo`. De los enlaces recibidos están comprobados el esquemático y la hoja de la Galileo (idénticos a las copias locales) y la guía de la placa; **la hoja del CY8C9540A, el capítulo del libro y el datasheet del Quark no se pudieron verificar en línea** (bloqueo anti-robots o corte de conexión), de modo que hoy solo existe su copia local. Habría que versionarlos en un lugar propio del laboratorio.
+1. **Los PDF de referencia de la Galileo**: cinco de ellos ya están en `datasheets/` de este repositorio (el libro de Apress no, por derechos de autor); en `utn/ltdi/galileo` siguen sin seguimiento. De los enlaces recibidos están comprobados el esquemático y la hoja de la Galileo (idénticos a las copias locales) y la guía de la placa; **la hoja del CY8C9540A, el capítulo del libro y el datasheet del Quark no se pudieron verificar en línea** (bloqueo anti-robots o corte de conexión), de modo que hoy solo existe su copia local. Habría que versionarlos en un lugar propio del laboratorio.
 2. **Dependencia de archive.org**: las imágenes de firmware y el SDK solo se consiguen en los espejos de archive.org (las páginas de Intel ya no existen). Convendría guardar una copia con las sumas de verificación en un almacenamiento propio del laboratorio.
 3. **`archivo/`** (prototipos, mediciones iniciales, informes anteriores) queda solo en el equipo de origen.
 4. **Las imágenes de flash generadas** (una por placa, con su MAC) y la **estación de compilación** compilada no se versionan: se regeneran con los scripts, o se publican como adjuntos de una versión.
