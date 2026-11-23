@@ -9,6 +9,7 @@ Revisión de proyectos abiertos que sirven de base o de inspiración para diseñ
 | Entradas | 8, aisladas, de campo (5–24 V); el PLC las lee **activas a nivel bajo** (pin a masa = activo) |
 | Salidas | 4 relés, uno por salida, **contactos independientes** (NA/NC/común por relé) |
 | Lógica | 3,3 o 5 V según IOREF; sin integrados I2C (ver §4) |
+| Alimentación | **decidido:** entra por la placa de expansión y de ahí un **cable corto con ficha 2,1 mm (positivo al centro) al jack de la Galileo** (opción A) |
 | Seguridad | alimentación de las bobinas a través del contacto maestro; fusible de campo |
 | Fabricación | KiCad, componentes con código de catálogo para pedirla ensamblada |
 
@@ -46,7 +47,17 @@ Revisión de proyectos abiertos que sirven de base o de inspiración para diseñ
 | Entradas con disparo de 9,5 V (fastLOGIC) | demasiado alto para 5 V; las nuestras deben activarse con 5 V |
 | Archivos con licencia no comercial (CC BY-NC-SA) o sin licencia | se toma la idea, no el archivo |
 
-## 5. Siguiente paso propuesto
+## 5. Alimentación (decidido)
+Una sola entrada de 5 V en la placa de expansión; un cable corto la lleva al jack de la Galileo, que conserva su propia protección de entrada. No se usa el pin VIN (la guía de Intel exige 5 V regulados en él y no se verificó en el esquemático que sea seguro con el puente VIN puesto).
+
+| Requisito de la placa | Motivo |
+|---|---|
+| Jack de 2,1 mm, positivo al centro, solo 5 V (marcado en la serigrafía) | la Galileo Gen1 admite únicamente 5 V; la guía recomienda hasta 3 A |
+| Diodo contra polaridad inversa y fusible reponible (PTC) en la entrada | una fuente equivocada dañaría la Galileo |
+| Pistas y conector dimensionados para la corriente total (Galileo + 4 bobinas ≈ 0,3 A más; consumo de la Galileo **sin medir**) | evitar caídas y calentamiento |
+| La Galileo se alimenta **sin pasar por el contacto maestro**; solo las bobinas pasan por él | la Galileo debe seguir viva con el contacto abierto |
+
+## 6. Siguiente paso propuesto
 1. Crear el proyecto KiCad con la huella del Uno (Alarm-Siren) y trazar el contorno en `Edge.Cuts`.
 2. Copiar de fastLOGIC v001 el bloque de entrada (EL817) y adaptarlo para 5–24 V y activo a nivel bajo; calcular las resistencias (corriente del LED del optoacoplador).
 3. Elegir el driver de relé tras revisar la hoja de datos con 3,3 V.
