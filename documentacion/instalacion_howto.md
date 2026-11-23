@@ -1,5 +1,7 @@
 # How-to: instalación del PLC didáctico con Galileo
 
+> Todo el material externo (de dónde sale, versión y suma de verificación) está en [`FUENTES.md`](../FUENTES.md). `instalacion/obtener_dependencias.sh` lo descarga.
+
 Guía para dejar listo un **PC de alumno (Ubuntu 22.04, x86-64)** y para **preparar una placa nueva**. Las órdenes están probadas donde se indica; lo no verificado está marcado como **[sin verificar]**.
 
 ```
@@ -52,7 +54,7 @@ Hace: revisa los requisitos; descarga el SDK de Intel (56 MB, del espejo de arch
 ### 5. Estación de compilación (`openplc_galileo_8e4s/`)
 Ya viene en el proyecto (11 MB). Contiene `iec2c` (matiec, compilado para el PC), `glue_generator`, la biblioteca IEC y el núcleo de OpenPLC ya compilado para la Galileo. Si hay que **reconstruirla** (se hace una vez, en un PC; luego se copia la carpeta):
 ```bash
-git clone https://github.com/thiagoralves/OpenPLC_v3 descargas/openplc_v3     # probado con el commit b5d41356 (abril de 2026)
+bash instalacion/obtener_dependencias.sh --sin-editor      # deja descargas/openplc_v3 en el commit b5d41356 (abril de 2026), entre otras cosas
 # matiec: construir utils/matiec_src/iec2c con las herramientas del propio OpenPLC (necesita gcc, g++, make, bison, flex, autoconf)
 bash scripts_openplc/construir.sh "$PWD/descargas/openplc_v3" "$PWD/openplc_galileo_8e4s" "$PWD/ejemplos_alumno/ascensor3.st"   # rutas ABSOLUTAS
 ```
@@ -82,7 +84,7 @@ En el editor:
 
 Cada placa lleva su propia **MAC dentro de la imagen** (la de la etiqueta), por eso hay una imagen por placa. **Riesgo:** un corte de energía o una imagen defectuosa durante el flasheo puede inutilizar la placa; no se tiene aún el archivo `FVMAIN.fv` ni consola serie para recuperarla del firmware (ver la guía de operación).
 
-1. **Material** (en el PC de preparación; no va a los PC de alumno): imágenes oficiales de Intel (firmware 1.1.1) `Flash-missingPDAT-Release-1.1.1.bin` (SHA-256 `3da41d38…1378`) y `.cap` (`efdce2e5…8b8d`), y el repositorio `intel/Galileo-Runtime` (clave de firma `sysimage/config/key.pem`, la misma de las imágenes originales). El origen exacto de descarga de las dos imágenes no quedó anotado: verificar el SHA-256.
+1. **Material** (en el PC de preparación; no va a los PC de alumno): `bash instalacion/obtener_dependencias.sh --sin-editor` descarga y verifica las imágenes oficiales de Intel (firmware 1.1.1: `Flash-missingPDAT-Release-1.1.1.bin` y `.cap`), la guía de la placa, `intel/Galileo-Runtime` (clave de firma por defecto `sysimage/config/key.pem`, la misma de las imágenes originales) y OpenPLC v3, cada uno en la versión y con la suma de verificación de `FUENTES.md`.
 2. **Construir la imagen** con la MAC de la etiqueta de *esa* placa:
 ```bash
 python3 -I scripts_imagen/construir_imagen.py descargas/flash_1.1.1 descargas/galileo_runtime/sysimage/config/key.pem \

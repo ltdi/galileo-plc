@@ -48,8 +48,8 @@ galileo-plc/
 - Imágenes y documentos ya pesados (`documentacion/*.docx` son 40–50 KB: sí entran).
 
 ### Pendiente antes de publicar
-1. Un script `instalacion/obtener_dependencias.sh` que baje y verifique (SHA-256) OpenPLC v3 (`thiagoralves/OpenPLC_v3` @ `b5d41356`), `intel/Galileo-Runtime` y las imágenes 1.1.1 de Intel, y reconstruya la estación.
-2. Anotar de dónde salieron exactamente `Flash-missingPDAT-Release-1.1.1.{bin,cap}` (no quedó registrado) y su SHA-256.
+1. ~~Script que baje y verifique las dependencias~~: hecho (`instalacion/obtener_dependencias.sh`, probado desde cero). Falta que reconstruya la estación (compilar matiec y llamar a `construir.sh`).
+2. ~~Anotar el origen de las imágenes 1.1.1~~: hecho en `FUENTES.md` (espejo de archive.org del sitio de Intel, con SHA-256).
 3. Decidir si `archivo/` (13 MB, prototipos y mediciones iniciales) se publica o queda local.
 4. Revisar que ningún archivo lleve datos personales o claves.
 5. Redistribuir la imagen firmada: la firma usa la clave por defecto **pública** de Intel (la misma de sus imágenes); confirmar que no hay problema de licencia al distribuir las imágenes de Intel modificadas.

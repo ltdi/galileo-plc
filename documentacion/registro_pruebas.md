@@ -241,3 +241,9 @@ Hasta las pruebas con A0 y A2 el NO iba a A2 y el NC a A0; después pasaron a D2
 
 - **`scripts_openplc/placa_virtual.py` (nuevo):** placas simuladas en loopback (receptor 9100/9101 como el de la imagen, Modbus en 1502, que el receptor anuncia con `puerto=1502`; el puente y el panel usan ese puerto). Probado con dos: el puente las encontró (`Galileo-000B`, `Galileo-000C`), el CLI del editor subió `plantilla_galileo` a una (compilación real) y el panel mostró las variables.
 - **Fallo encontrado con el navegador:** el panel reconstruía los botones cada 400 ms y un clic se perdía si la página se redibujaba entre pulsar y soltar (la referencia al botón quedaba obsoleta). Posible causa de «no me deja escribir 1 o 0». **Corregido:** la página construye los botones una vez y solo actualiza valores y marcas (y no sobreescribe el campo de `%MW` mientras se escribe). Comprobado en el navegador: clic en «forzar 0» → `%IX0.0 (forzada)` con borde naranja, `pulsador`=0, `fe`=1.
+
+### Fuentes y descarga de dependencias (23 de noviembre)
+
+- `FUENTES.md` (nuevo) lista cada dependencia externa con origen, versión/commit, SHA-256 y comprobación de disponibilidad. `instalacion/obtener_dependencias.sh` (nuevo) las descarga y verifica.
+- **Prueba desde cero** en una carpeta vacía: las cuatro descargas del espejo de archive.org (`.bin`, `.cap`, `CapsuleApp-1.1.1.efi` y la guía de la placa) coincidieron con las sumas de verificación; `intel/Galileo-Runtime` se obtuvo en el commit `ee66e9a3` y `thiagoralves/OpenPLC_v3` en `b5d41356`. El SDK (56 227 185 B) y el editor 4.3.5 (188 322 226 B) responden en sus URL con el tamaño exacto; el editor no se volvió a descargar.
+- **Lo que sigue sin ser alcanzable desde otro equipo:** los PDF de referencia de la Galileo (sin versionar en `utn/ltdi/galileo`), `archivo/`, y todo depende de que archive.org mantenga los espejos de Intel.

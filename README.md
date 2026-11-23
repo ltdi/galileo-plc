@@ -48,4 +48,4 @@ Para mantenerlo liviano (≈600 KB) **no incluye** material de terceros ni archi
 | `archivo/` | material histórico (prototipos, mediciones iniciales, informes anteriores) | queda en el equipo de origen |
 
 `scripts_openplc/placas.json` (servidor central, opcional) se crea copiando `placas.ejemplo.json`.
-Pendiente: un script `instalacion/obtener_dependencias.sh` que descargue y verifique todo lo anterior.
+Todo lo anterior, con su origen, versión y suma de verificación, está en [`FUENTES.md`](FUENTES.md); `instalacion/obtener_dependencias.sh` lo descarga y verifica.
