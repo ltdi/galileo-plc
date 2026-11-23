@@ -11,7 +11,7 @@ Ideas para la siguiente etapa, con lo que se **comprobó** en la placa (23/11/20
 | 5 | Otras mejoras ya identificadas | varía | no | varía |
 
 ## 1. Contacto maestro con vigilancia
-Un contacto (pulsador de emergencia y/o llave) en serie con la alimentación de las bobinas de los relés; con un relé de vigilancia gobernado por un latido del PLC para cubrir cuelgues y arranque. **No consume ninguna de las cuatro salidas:** el latido sale por A0–A3. Detalle en [`propuesta_contacto_maestro.md`](propuesta_contacto_maestro.md).
+Un **interruptor maestro con autoenclavamiento por MOSFET** (pulsadores ARMAR y PARO) en la alimentación de las bobinas de los relés; tras un corte o reinicio las bobinas quedan apagadas hasta pulsar ARMAR. Opcionalmente un latido del PLC lo desarma ante un cuelgue. Es un paro didáctico, no de seguridad. **No consume ninguna de las cuatro salidas:** el latido sale por A0–A3. Detalle en [`propuesta_contacto_maestro.md`](propuesta_contacto_maestro.md).
 
 ## 2. Aprovechar las entradas analógicas libres
 - **Qué hay.** La placa trae un conversor **AD7298** (12 bits, 8 canales; la Galileo usa 6, A0–A5). El kernel ya lo gestiona: existe `/sys/bus/iio/devices/iio:device0` con `in_voltage0_raw` … `in_voltage5_raw`, `in_voltageN_scale` y un sensor de temperatura.

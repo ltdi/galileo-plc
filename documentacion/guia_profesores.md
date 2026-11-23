@@ -66,7 +66,7 @@ Los programas 1 a 3 están pensados para el cableado típico de un tablero: puls
 2. El **paro de emergencia** y las protecciones (guardamotor, térmico, fusibles) van cableados, **sin depender del PLC**.
 3. Las salidas manejan un módulo de relé; la potencia la conmutan contactores con sus protecciones.
 4. **Al encender**, la placa ejecuta un programa de fábrica que **mantiene las cuatro salidas apagadas** (se comprobó: ni una escritura Modbus las activa) hasta que se cargue otro. **Pero no se midió el estado de los pines en los primeros ~15 segundos del arranque**, antes de que Linux inicie el PLC: con una carga peligrosa conectada, comprobar ese intervalo con un instrumento antes de confiar en él.
-5. Para la placa de expansión se propone un **contacto maestro** (pulsador de emergencia o llave en serie con la alimentación de las bobinas de los relés), idealmente con vigilancia, que deshabilita las salidas aunque el software falle (ver `propuesta_contacto_maestro.md`).
+5. Para la placa de expansión se propone un **contacto maestro** (interruptor con autoenclavamiento, pulsadores ARMAR y PARO, en la alimentación de las bobinas de los relés; paro didáctico, no de seguridad), que deshabilita las salidas aunque el software falle (ver `propuesta_contacto_maestro.md`).
 6. Las entradas se leen **activas al cerrar a masa** (lógica negativa): una entrada sin conectar vale «inactiva».
 
 ## 7. Lo que falta
