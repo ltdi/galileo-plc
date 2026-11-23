@@ -75,6 +75,7 @@ Los programas 1 a 3 están pensados para el cableado típico de un tablero: puls
 - Entradas analógicas.
 - Medir el estado de las salidas durante los primeros segundos del arranque, y una guía para el alumno.
 - Pruebas en el laboratorio con varios bancos a la vez, y en Windows.
+- Ideas de mejora (entradas analógicas, display, Wi-Fi, contacto maestro): `propuestas_de_mejora.md`.
 - Si necesitan un práctico que no está en la lista, indíquenlo: los de estas características se pueden agregar al repositorio.
 
 *Repositorio: https://github.com/ltdi/galileo-plc · Instalación: `documentacion/instalacion_howto.md` · Operación: `documentacion/guia_operacion.md`.*

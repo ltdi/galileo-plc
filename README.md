@@ -8,6 +8,7 @@ Una Galileo Gen 1 (FAB-D) que arranca sola como un PLC: imagen propia en la flas
 |---|---|
 | `Informe final - PLC didactico Galileo.docx` | qué se construyó, pines, flujo del alumno, pruebas, problemas, riesgos y pasos siguientes |
 | `guia_profesores.md` (y `Guia para profesores - PLC Galileo.docx`) | **para docentes** de máquinas e instalaciones eléctricas: qué hace el PLC, límites, prácticos y seguridad |
+| `propuestas_de_mejora.md` | **propuestas de mejora**: contacto maestro, entradas analógicas, display, Wi-Fi y otras |
 | `propuesta_contacto_maestro.md` | propuesta de hardware: contacto maestro (con vigilancia) que deshabilita las bobinas de los relés |
 | `instalacion_howto.md` | **cómo instalar**: PC de alumno (Ubuntu) y placa nueva |
 | `propuesta_repositorio.md` | qué es `ltdi/galileo` y propuesta de repositorio `galileo-plc` |
