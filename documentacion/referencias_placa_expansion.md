@@ -42,7 +42,7 @@ Revisión de proyectos abiertos que sirven de base o de inspiración para diseñ
 | Idea | Motivo |
 |---|---|
 | Expansor I2C PCF8574 (shield OSHWA) | el bus de la Galileo ya tiene el Cypress en la dirección `0x20`, y el PCF8574 usa `0x20`–`0x27`: chocarían. Nuestros 12 puntos de E/S son pines directos |
-| Salida de relé con cuatro entradas analógicas, pantalla, Ethernet, tarjeta SD | no corresponden: lo resuelve la Galileo |
+| Pantalla, Ethernet, tarjeta SD, USB-serie, RS-485 | no corresponden: lo resuelve la Galileo |
 | Entradas con disparo de 9,5 V (fastLOGIC) | demasiado alto para 5 V; las nuestras deben activarse con 5 V |
 | Archivos con licencia no comercial (CC BY-NC-SA) o sin licencia | se toma la idea, no el archivo |
 
