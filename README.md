@@ -41,7 +41,10 @@ Una Galileo Gen 1 (FAB-D) que arranca sola como un PLC: imagen propia en la flas
 | `panel_vivo.py` | panel en el navegador: ver y forzar entradas, salidas y variables |
 | `placa_virtual.py` | placas virtuales para probar sin hardware |
 | `servidor_runtime.py` | servidor de runtime (lo reutiliza el puente; también sirve como servidor central alternativo) |
-| `placas.json` / `configurar_alias.sh` | lista de placas y alias de red del servidor central alternativo |
+| `placas.ejemplo.json` / `configurar_alias.sh` | ejemplo de lista de placas y alias de red del servidor central alternativo |
+| `construir.sh` | reconstruye la estación de compilación |
+| `stubs_galileo.cpp` | apoyo para compilar el núcleo en la Galileo |
+| `modbus_min.py`, `tel.py` | cliente Modbus mínimo y cliente de la consola de rescate |
 | `proyecto_editor_a_st.py` | adaptador de proyectos de OpenPLC Editor |
 | `hardware_layer_galileo_8e4s.cpp` | capa de hardware: entradas, salidas y forzado |
 | `plc.py` | compilador para línea de comandos |
