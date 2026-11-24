@@ -23,22 +23,22 @@ Todo corre en el PC del alumno; la única conexión externa es la red local haci
 
 ```mermaid
 flowchart LR
-    LANZ["lanzar_plc.py"]
-    EDITOR["OpenPLC Editor"]
-    NAV["Ventana de Firefox<br/>Panel en vivo"]
-    subgraph PUENTE["Puente local (puente_local.py)"]
-        API["Runtime emulado<br/>HTTPS en 127.0.0.N"]
-        PANEL["Servidor del panel<br/>127.0.0.1:8088"]
+    LANZ["Lanzador<br/>lanzar_plc.py"]
+    EDITOR["OpenPLC Editor 4.3.5"]
+    NAV["Navegador (Firefox)<br/>ventana del panel"]
+    subgraph PUENTE["Puente local — puente_local.py"]
+        API["Runtime OpenPLC emulado<br/>servidor_runtime.py<br/>HTTPS en 127.0.0.N"]
+        PANEL["Panel en vivo<br/>panel_vivo.py<br/>127.0.0.1:8088"]
     end
-    GAL["Galileo<br/>(imagen del PLC)"]
+    GAL["Placa Galileo<br/>OpenPLC + receptor de carga"]
 
     LANZ --> EDITOR
     LANZ --> PUENTE
     LANZ --> NAV
-    EDITOR <-->|"Search y Build and upload<br/>(solo loopback)"| API
+    EDITOR <-->|"Search y Build and upload<br/>(solo loopback, HTTPS)"| API
     NAV <--> PANEL
-    API -->|"carga: puertos 9100 y 9101"| GAL
-    PANEL <-->|"Modbus TCP 502"| GAL
+    API -->|"carga de programas<br/>puertos 9100 y 9101"| GAL
+    PANEL <-->|"Modbus TCP<br/>puerto 502"| GAL
     PUENTE -.->|"escaneo de la red local"| GAL
 
     style LANZ fill:#e8eef7,stroke:#526b8a,color:#172b45
