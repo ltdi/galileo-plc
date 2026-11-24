@@ -12,3 +12,4 @@ __pycache__/
 scripts_openplc/datos_servidor/
 scripts_openplc/placas.json
 *.pem
+.~lock.*#
