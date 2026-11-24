@@ -21,33 +21,7 @@ Una Galileo Gen 1 (FAB-D) que arranca sola como un PLC: imagen propia en la flas
 
 Todo corre en el PC del alumno; la única conexión externa es la red local hacia la placa.
 
-```mermaid
-flowchart LR
-    LANZ["Lanzador<br/>lanzar_plc.py"]
-    EDITOR["OpenPLC Editor 4.3.5"]
-    NAV["Navegador (Firefox)<br/>ventana del panel"]
-    subgraph PUENTE["Puente local — puente_local.py"]
-        API["Runtime OpenPLC emulado<br/>servidor_runtime.py<br/>HTTPS en 127.0.0.N"]
-        PANEL["Panel en vivo<br/>panel_vivo.py<br/>127.0.0.1:8088"]
-    end
-    GAL["Placa Galileo<br/>OpenPLC + receptor de carga"]
-
-    LANZ --> EDITOR
-    LANZ --> PUENTE
-    LANZ --> NAV
-    EDITOR <-->|"Search y Build and upload<br/>(solo loopback, HTTPS)"| API
-    NAV <--> PANEL
-    API -->|"carga de programas<br/>puertos 9100 y 9101"| GAL
-    PANEL <-->|"Modbus TCP<br/>puerto 502"| GAL
-    PUENTE -.->|"escaneo de la red local"| GAL
-
-    style LANZ fill:#e8eef7,stroke:#526b8a,color:#172b45
-    style EDITOR fill:#e8eef7,stroke:#526b8a,color:#172b45
-    style NAV fill:#e8eef7,stroke:#526b8a,color:#172b45
-    style API fill:#dcefe8,stroke:#477d68,color:#173d30
-    style PANEL fill:#dcefe8,stroke:#477d68,color:#173d30
-    style GAL fill:#e8eef7,stroke:#526b8a,color:#172b45
-```
+![Cómo se conectan las partes: lanzador, editor, navegador, puente local y placa Galileo](documentacion/diagrama_arquitectura.svg)
 
 El editor cree que habla con un runtime de OpenPLC; en realidad habla con el puente, que compila el programa y lo carga en la placa. El panel lee y fuerza por Modbus. Al cerrar el editor, el lanzador detiene el puente y el panel.
 
