@@ -15,6 +15,7 @@ Una Galileo Gen 1 (FAB-D) que arranca sola como un PLC: imagen propia en la flas
 | `propuesta_repositorio.md` | qué es `ltdi/galileo` y propuesta de repositorio `galileo-plc` |
 | `guia_operacion.md` | cómo usar, cargar programas, reconstruir y flashear la imagen, rescatar una placa |
 | `mapa_pines_galileo_plc.md` | pines, GPIO de Linux, puertos y máscaras del Cypress, mux, registros, direcciones Modbus |
+| `inventario_placas.md` | MAC de cada placa, su imagen y su estado de flasheo |
 | `registro_pruebas.md` | bitácora cronológica de todas las pruebas |
 
 ## Cómo se conectan las partes
